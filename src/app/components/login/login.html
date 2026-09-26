@@ -1,0 +1,46 @@
+<table>
+    <tr style="vertical-align: middle;">
+        <td style="width: 5px;"></td>
+        <td>
+            <img src="https://bisque-antelope-888426.hostingersite.com/hr_logo.png"
+                 style="margin-top: -6px;"/>
+        </td>
+    </tr>
+</table>
+<table style="margin-left: 40px;">
+    <tr>
+        <td colspan="2" style="height: 20px;"></td>
+    </tr>
+    <tr>
+        <td>e-mail:&nbsp;</td>
+        <td>
+            <input type="text" [(ngModel)]="jogadorLogin.email"
+                   style="width: 360px; height: 22px;"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding-top: 6px;">Senha:&nbsp;</td>
+        <td style="padding-top: 6px;">
+            <input type="password" [(ngModel)]="jogadorLogin.Senha"
+                   style="width: 153px; height: 22px;"/>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="padding-top: 16px;">
+            <table>
+                <tr>
+                    <td>
+                        <button type="button" (click)="loginJogador()"
+                                class="btn-login" style="margin-top: 4px; margin-left: -3px;">Login</button>
+                    </td>
+                    <td style="width: 20px;"></td>
+                    <td>
+                        <button type="button" (click)="cadastro()"
+                                class="btn-login" style="margin-top: 4px;">Cadastrar</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

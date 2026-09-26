@@ -1,0 +1,49 @@
+<table style="background-color: #909090; height: 100%;">
+    <tr>
+        <td style="padding-left: 0px; background-color: white;">
+            <table style="margin: -20px 0px -25px 0px; width: 100%;">
+                <tr style="vertical-align: middle;">
+                    <td style="width: 5px;"></td>
+                    <td>
+                        <img src="https://bisque-antelope-888426.hostingersite.com/hr_logo.png"
+                            style="margin-top: 0px;"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color: #EDEDED;">
+            <table style="background-color: #EDEDED; height: 180px;">
+                <tr style="height: 5px;">
+                    <td rowspan="10" style="width: 32px;"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="font-size: 11px; vertical-align: bottom; color: #606060; text-align: right;">(máximo de 20 caracteres)</td>
+                </tr>
+                <tr>
+                    <td style="width: 124px; font-weight: bold;">Nova Senha:</td>
+                    <td>
+                        <input type="password" [(ngModel)]="novaSenha" maxLength="20"
+                            style="height: 22px;"/>
+                    </td>
+                    <td rowspan="5"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">Confirme a Senha:</td>
+                    <td>
+                        <input type="password" [(ngModel)]="confirmeSenha" maxLength="20"
+                            style="height: 22px;"/>
+                    </td>        
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="padding-top: 30px;">
+                        <button type="button" (click)="gravar()" class="btn-login">Trocar Senha</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

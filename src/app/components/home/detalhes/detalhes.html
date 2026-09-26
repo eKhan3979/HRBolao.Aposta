@@ -1,0 +1,38 @@
+<table>
+    <tr style="vertical-align: middle;">
+        <td style="width: 1px;"></td>
+        <td>
+            <img src="https://bisque-antelope-888426.hostingersite.com/hr_logo.png"
+                 style="margin-top: -6px;"/>
+        </td>
+    </tr>
+</table>
+
+<table style="width: 280px; margin-top: -18px;">
+    <tr>
+        <td colspan="3" style="text-align: center; font-size: 16px; font-weight: bold; color: var(--cor-roxo)">Pontuação por rodada</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="text-align: center; font-size: 14px; margin-bottom: 10px; margin-top: 10px; font-weight: bold;">
+            {{ campeonato.Nome }} - {{ campeonato.Ano }}
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 60px;"></td>
+        <td>
+            <table class="tableDados" style="margin-top: 10px; width: 160px;">
+                <thead class="tableHead">
+                    <th style="width: 80px;">Rodada</th>
+                    <th style="width: 80px;">Pontos</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pontosRodada of listaRodada">
+                        <td style="text-align: center;">{{ pontosRodada.Rodada }}</td>
+                        <td style="text-align: center;">{{ pontosRodada.Pontos }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td style="width: 60px;"></td>
+    </tr>
+</table>

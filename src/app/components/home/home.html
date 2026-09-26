@@ -1,0 +1,200 @@
+<table style="width: 1128px;">
+    <tr style="vertical-align: middle;">
+        <td style="width: 5px;"></td>
+        <td>
+            <img src="https://bisque-antelope-888426.hostingersite.com/hr_logo.png"
+                 style="margin-top: -6px;"/>
+        </td>
+        <td style="text-align: right;">
+            <span>
+                <label style="color: #606060; vertical-align: middle; margin-right: 2px;">Jogador:</label>
+                <label style="color: #5F0579; vertical-align: middle; margin-right: 20px; font-weight: bold;">
+                    {{ jogadorLogado.NomeApelido }}
+                </label>
+                <button type="button" (click)="trocarSenha()" class="btn-ativo"
+                        style="width: 120px; margin-right: 20px;">Trocar Senha</button>
+                <button type="button" (click)="sair()" class="btn-ativo"
+                        style="width: 64px;">Sair</button>
+            </span>
+        </td>
+    </tr>
+</table>
+
+<table style="margin-left: 14px; margin-top: 10px;">
+    <tr>
+        <td style="font-weight: bold; font-size: 14px; width: 270px;">Campeonato:&nbsp;</td>
+        <td style="font-weight: bold; font-size: 14px; width: 187px;">Rodada:</td>
+        <td style="font-weight: bold; font-size: 14px; width: 110px;">Pontos Rodada:</td>
+        <td style="width: 140px;"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <select [(ngModel)]="campeonatoSelecionado"
+                    (ngModelChange)="carregarCampeonato()"
+                    style="height: 28px; width: 263px;">
+                <option *ngFor="let campeonato of listaCampeonatosStr">
+                    {{ campeonato }}
+                </option>
+            </select>
+        </td>
+        <td>
+            <select style="height: 28px; width: 180px;"
+                    [(ngModel)]="rodadaSelecionada"
+                    (ngModelChange)="carregarRodada()">
+                <option *ngFor="let rodada of listaRodadas">
+                    {{ rodada.RodadaNome }}
+                </option>
+            </select>
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="totalPontosRodada"
+                   style="font-size: 14px; font-weight: bold; text-align: center;
+                          height: 22px; width: 95px;"/>
+        </td>
+        <td>
+            <button type="button" (click)="gravarApostas()"
+                    [disabled]="gravarDesabilitado"
+                    class="btn-ativo">Gravar Apostas</button>
+        </td>
+    </tr>
+</table>
+
+<table style="padding-left: 10px; margin-top: 10px;">
+    <tr>
+        <td style="vertical-align: top;">
+            <table>
+                <tr>
+                    <td style="text-align: start; font-size: 14px; padding-left: 4px; font-weight: bold;">Jogos da Rodada: Apostas</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="height: 450px; overflow-y: auto;">                
+                            <table>
+                                <tr>
+                                    <td>
+                                        <table class="tableDados">
+                                            <thead>
+                                                <tr class="tableHead">
+                                                    <th style="width: 80px;">Data</th>
+                                                    <th style="width: 40px;">Hora</th>
+                                                    <th style="width: 25px;"></th>
+                                                    <th style="width: 150px; text-align: start; padding-left: 4px;">Time mandante</th>
+                                                    <th style="width: 45px;"></th>
+                                                    <th style="width: 10px; text-align: center;"></th>
+                                                    <th style="width: 45px;"></th>
+                                                    <th style="width: 25px;"></th>
+                                                    <th style="width: 150px; text-align: start; padding-left: 4px;">Time visitante</th>
+                                                    <th style="width: 80px;">Resultado</th>
+                                                    <th style="width: 60px;">Pontos</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let aposta of listaApostas" style="text-align: center;">
+                                                    <td>{{ aposta.Dd_Mm_Yyyy }}</td>
+                                                    <td>{{ aposta.Hh_Mm }}</td>
+                                                    <td>
+                                                        <img src="{{ aposta.EscudoCasa }}" height="25px" width="25px"
+                                                            style="vertical-align: middle;"/>
+                                                    </td>
+                                                    <td style="text-align: start; padding-left: 4px;">{{ aposta.TimeCasa }}</td>
+                                                    <td>
+                                                        <input type="number" min="0" max="12"
+                                                            [(ngModel)]="aposta.GolsApostaTimeCasa"
+                                                            style="width: 40px; height: 24px; text-align: center; border: 0; background-color: transparent;" 
+                                                            [readOnly]="!aposta.Editavel" />
+                                                    </td>                            
+                                                    <td style="text-align: center;">x</td>
+                                                    <td>
+                                                        <input type="number" [(ngModel)]="aposta.GolsApostaTimeVisitante"
+                                                            min="0" max="12" [readOnly]="!aposta.Editavel"
+                                                            style="width: 40px; height: 24px; text-align: center; border: 0; background-color: transparent;" />
+                                                    </td>
+                                                    <td>
+                                                        <img src="{{ aposta.EscudoVisitante }}" height="25px" width="25px"
+                                                            style="vertical-align: middle;"/>
+                                                    </td>
+                                                    <td style="text-align: start; padding-left: 4px;">{{ aposta.TimeVisitante }}</td>
+                                                    <td>
+                                                        {{ (aposta.Finalizado) ? aposta.GolsTimeCasa + " x " + aposta.GolsTimeVisitante : "" }}
+                                                    </td>
+                                                    <td>
+                                                        {{ (aposta.Finalizado) ? aposta.Pontos : "" }}                            
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="vertical-align: top;">
+            <table>
+                <tr>
+                    <td style="text-align: start; padding-left: 4px; font-size: 14px; font-weight: bold;">Ranking dos Jogadores</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top; max-height: 30%;">
+                        <table class="tableDados">
+                            <thead>
+                                <tr class="tableHead">
+                                    <th style="width: 64px;">Posição</th>
+                                    <th style="width: 172px; text-align: start; padding-left: 4px;">Nome/Apelido</th>
+                                    <th style="width: 60px;">Pontos</th>
+                                    <!--<th style="width: 105px;"></th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ranking of listaRanking" style="text-align: center;">
+                                    <td>{{ ranking.Posicao }}</td>
+                                    <!--<td style="text-align: start; padding-left: 4px;">{{ ranking.NomeApelido }}</td>-->
+                                    <td style="text-align: start; padding-left: 4px;">
+                                        {{ ranking.NomeApelido }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn-primary" style="width: 60px;"
+                                                (click)="detalhes(ranking)">{{ ranking.Pontos }}</button>
+                                    </td>
+                                    <!--
+                                    <td>
+                                        <button type="button" class="btn-primary"
+                                                (click)="detalhes(ranking)">Ver Detalhes</button>
+                                    </td>
+                                    -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: start; padding-left: 4px; font-size: 14px; font-weight: bold;">Ranking da Rodada</td>
+                </tr>
+                <tr>
+                    <td style="max-height: 30%;">
+                        <table class="tableDados">
+                            <thead class="tableHead">
+                                <th style="width: 64px;">Posição</th>
+                                <th style="width: 172px; text-align: start; padding-left: 4px;">Nome / Apelido</th>
+                                <th style="width: 60px;">Pontos</th>
+                            </thead>
+                            <tbody class="tableBody">
+                                <tr *ngFor="let rank of listaRankingRodada">
+                                    <td style="text-align: center;">{{ rank.Posicao }}</td>
+                                    <td style="padding-left: 4px;">{{ rank.NomeApelido }}</td>
+                                    <td style="text-align: center;">
+                                        <button type="button" class="btn-primary" style="width: 60px;"
+                                                (click)="detRodada(rank)">{{ rank.Pontos }}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

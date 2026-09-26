@@ -1,0 +1,114 @@
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  //color: var(--color-text);
+  //background: var(--color-background);  
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: 0;
+  border-color: #5F0579;
+  border-radius: 5px;
+  color: black;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--cor-roxo);
+    color: white;
+  }
+}
+
+.btn-ativo {
+  background-color: white;
+  border: 1;
+  border-color: #606060;
+  border-radius: 5px;
+  color: black;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--cor-roxo);
+    color: white;
+  }
+}
+
+.btn-login {
+  background-color: white;
+  border: 1;
+  border-color: #606060;
+  border-radius: 5px;
+  color: black;
+  padding: 6px 12px 6px 12px;
+  font-size: 12px;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--cor-roxo);
+    color: white;
+  }
+}
+
+.tableDados {
+  background-color: #A0A0A0;
+  border-spacing: 4px;
+}
+
+.tableHead {
+  background-color: #8606B0;
+  color: white;
+  height: 28px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+  color: #000000;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #E0E0E0;
+  color: #000000;
+}
