@@ -8,47 +8,55 @@
     </tr>
 </table>
 
-<table style="width: 747px; margin-top: -18px;">
-    <tr>
-        <td colspan="3" style="text-align: center; font-size: 16px; font-weight: bold; color: var(--cor-roxo)">
-            Pontuação de <strong>{{ ranking.NomeApelido }}</strong> na rodada {{ rodada }}
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3" style="text-align: center; font-size: 14px; margin-bottom: 10px; margin-top: 10px; font-weight: bold;">
-            {{ campeonato.Nome }} - {{ campeonato.Ano }}
-        </td>
-    </tr>
-    <tr>
-        <td style="width: 20px;"></td>
-        <td>
-            <table class="tableDados" style="margin-top: 10px; width: 707px;">
-                <thead class="tableHead">
-                    <th style="width: 72px;">Data</th>
-                    <th style="width: 45px;">Hora</th>
-                    <th style="width: 120px; text-align: start; padding-left: 4px;">Time Casa</th>
-                    <th style="width: 36px;"></th>
-                    <th style="width: 20px;">x</th>
-                    <th style="width: 36px;"></th>
-                    <th style="width: 120px; text-align: start; padding-left: 4px;">Time Visitante</th>
-                    <th style="width: 60px;">Resultado</th>
-                    <th style="width: 50px;">Pontos</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let jogo of listaJogos">
-                        <td style="text-align: center;">{{ jogo.Dd_Mm_Yyyy }}</td>
-                        <td style="text-align: center;">{{ jogo.Hh_Mm }}</td>
-                        <td style="text-align: start; padding-left: 4px;">{{ jogo.TimeCasa }}</td>
-                        <td style="text-align: center;">{{ jogo.GolsCasaAposta }}</td>
-                        <td style="text-align: center;">x</td>
-                        <td style="text-align: center;">{{ jogo.GolsVisitanteAposta }}</td>
-                        <td style="text-align: start; padding-left: 4px;">{{ jogo.TimeVisitante }}</td>
-                        <td style="text-align: center;">{{ (jogo.Finalizado ? jogo.GolsTimeCasa + ' x ' + jogo.GolsTimeVisitante : "") }}</td>
-                        <td style="text-align: center;">{{ jogo.Pontos }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td style="width: 20px;"></td>
-    </tr>
-</table>
+<div style="height: 395px; vertical-align: top;">
+    <table style="width: 747px; margin-top: -18px;">
+        <tr>
+            <td colspan="3" style="text-align: center; font-size: 16px; font-weight: bold; color: var(--cor-roxo)">
+                Pontuação de <strong>{{ ranking.NomeApelido }}</strong> na rodada {{ rodada }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center; font-size: 14px; margin-bottom: 10px; margin-top: 10px; font-weight: bold;">
+                {{ campeonato.Nome }} - {{ campeonato.Ano }}
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 20px;"></td>
+            <td>
+                <table class="tableDados" style="margin-top: 10px; width: 707px;">
+                    <thead class="tableHead">
+                        <th style="width: 72px;">Data</th>
+                        <th style="width: 45px;">Hora</th>
+                        <th style="width: 120px; text-align: start; padding-left: 4px;">Time Casa</th>
+                        <th style="width: 36px;"></th>
+                        <th style="width: 20px;">x</th>
+                        <th style="width: 36px;"></th>
+                        <th style="width: 120px; text-align: start; padding-left: 4px;">Time Visitante</th>
+                        <th style="width: 60px;">Resultado</th>
+                        <th style="width: 50px;">Pontos</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let jogo of listaJogos">
+                            <td style="text-align: center;">{{ jogo.Dd_Mm_Yyyy }}</td>
+                            <td style="text-align: center;">{{ jogo.Hh_Mm }}</td>
+                            <td style="text-align: start; padding-left: 4px;">{{ jogo.TimeCasa }}</td>
+                            <td style="text-align: center;">{{ jogo.GolsCasaAposta }}</td>
+                            <td style="text-align: center;">x</td>
+                            <td style="text-align: center;">{{ jogo.GolsVisitanteAposta }}</td>
+                            <td style="text-align: start; padding-left: 4px;">{{ jogo.TimeVisitante }}</td>
+                            <td style="text-align: center;">{{ (jogo.Finalizado ? jogo.GolsTimeCasa + ' x ' + jogo.GolsTimeVisitante : "") }}</td>
+                            <td style="text-align: center;">{{ jogo.Pontos }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 20px;"></td>
+        </tr>
+    </table>
+</div>
+
+<div style="text-align: right; margin-right: 20px;">
+    <button type="button" class="btn-ativo" (click)="fechar()" style="width: 80px;">
+        Fechar
+    </button>
+</div>

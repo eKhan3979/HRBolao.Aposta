@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { CampeonatoModel } from '../../../models/campeonatoModel';
 import { EmpresaModel } from '../../../models/empresaModel';
@@ -22,16 +22,19 @@ export class Detalhes implements OnInit {
   campeonato: CampeonatoModel = undefined as unknown as CampeonatoModel;
   listaRanking: RankingModel[] = undefined as unknown as RankingModel[];
   listaRodada: PontosRodadaDto[] = undefined as unknown as PontosRodadaDto[];
+  ranking: RankingEmpresaModel = undefined as unknown as RankingEmpresaModel;
 
   constructor(private cdr: ChangeDetectorRef,
               private dialog: MatDialog,
-              private homeService: HomeService,
+              private homeService: HomeService,              
               @Inject(MAT_DIALOG_DATA) public data: {
                 campeonato: CampeonatoModel;
                 empresa: EmpresaModel,
                 ranking: RankingEmpresaModel
-              }) {
+              },
+              public dialogRef: MatDialogRef<Detalhes>) {
                 this.campeonato = this.data.campeonato;
+                this.ranking = this.data.ranking;
   }
     
   ngOnInit(): void {
@@ -42,4 +45,8 @@ export class Detalhes implements OnInit {
           this.cdr.markForCheck();
         });
   }  
+
+  fechar() {
+    this.dialogRef.close();
+  }
 }

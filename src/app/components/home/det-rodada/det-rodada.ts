@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { CampeonatoModel } from '../../../models/campeonatoModel';
 import { EmpresaModel } from '../../../models/empresaModel';
@@ -28,6 +28,7 @@ export class DetRodada {
   constructor(private cdr: ChangeDetectorRef,
               private dialog: MatDialog,
               private apostaService: ApostaService,
+              private dialogRef: MatDialogRef<DetRodada>,
               @Inject(MAT_DIALOG_DATA) public data: {
                 campeonato: CampeonatoModel;
                 empresa: EmpresaModel,
@@ -47,5 +48,9 @@ export class DetRodada {
           console.log(this.listaJogos);
           this.cdr.markForCheck();
         });
+  }
+
+  fechar() {
+    this.dialogRef.close();
   }
 }

@@ -272,7 +272,7 @@ export class Home implements OnInit {
     this.dialog.open(Detalhes, {
       width: '180px',
       height: '360px',
-      disableClose: false,
+      disableClose: true,
       data: {
         campeonato: this.listaCampeonatos[index],
         empresa: this.empresaSelecionada,
@@ -286,12 +286,12 @@ export class Home implements OnInit {
     let index2 = this.listaRodadas.findIndex(t => t.RodadaNome == this.rodadaSelecionada);
 
     this.dialog.open(DetRodada, {
-      width: '770px',
+      width: '747px',
       height: '540px',
       maxWidth: '770px',
       maxHeight: '540px',
       panelClass: 'fullscreen-dialog',
-      disableClose: false,
+      disableClose: true,
       data: {
         campeonato: this.listaCampeonatos[index],
         empresa: this.empresaSelecionada,
