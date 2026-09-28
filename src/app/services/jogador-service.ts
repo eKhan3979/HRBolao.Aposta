@@ -29,7 +29,7 @@ export class JogadorService {
 
     jogadorGravar(jogador: JogadorModel) {
         if (jogador.IdJogador == 0) {
-            return this.http.get<[]>(this.linkBase + "jogadorGravar/" + jogador.IdJogador + "/" + jogador.IdEmpresa + "/" + jogador.NomeApelido + "/1234/" + jogador.email);
+            return this.http.get<[]>(this.linkBase + "jogadorGravar/" + jogador.IdJogador + "/" + jogador.IdEmpresa + "/" + jogador.NomeApelido + "/" + jogador.Senha + "/" + jogador.email);
         } else {
             return this.http.get<[]>(this.linkBase + "jogadorGravar/" + jogador.IdJogador + "/" + jogador.IdEmpresa + "/" + jogador.NomeApelido + "/" + jogador.Senha + "/" + jogador.email);
         }
